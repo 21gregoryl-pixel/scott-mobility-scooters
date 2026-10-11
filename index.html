@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scott Mobility Scooters</title>
+<meta name="description" content="Mobility scooter rentals delivered to your Anaheim hotel. $75/day, 8 hours of use guaranteed, hotel drop-off and pickup included. Book by phone.">
+<meta property="og:title" content="Scott Mobility Scooters · Anaheim hotel delivery">
+<meta property="og:description" content="Skip the park rental line. Your scooter is waiting at your hotel. $75/day, delivery included.">
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="canonical" href="https://scottmobilityscooters.com/">
+<style>img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: one long page, every section a full-width band; big type and big tap targets for tourists on phones in bright sun. */
+:root{
+  --bg:#f7f3ea;         /* warm sand */
+  --fg:#172532;         /* deep harbor ink */
+  --muted:#5b6974;
+  --surface:#ffffff;
+  --line:#e2dbcc;
+  --sea:#0f5b74;        /* primary */
+  --sea-deep:#0a3f52;
+  --sun:#f28c28;        /* accent — bright enough to see outdoors */
+  --sun-ink:#1a1200;
+  --ok:#2e8b57;
+  --display:"Lexend",system-ui,sans-serif;
+  --body:"Atkinson Hyperlegible",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1a22;--fg:#eef2f4;--muted:#a3b0b9;--surface:#182631;--line:#2a3a46;
+    --sea:#5fb3cf;--sea-deep:#0a3f52;--sun:#f6a04c;--sun-ink:#1a1200;--ok:#5fc48a;color-scheme:dark}
+}
+:root[data-theme="dark"]{
+  --bg:#0f1a22;--fg:#eef2f4;--muted:#a3b0b9;--surface:#182631;--line:#2a3a46;
+  --sea:#5fb3cf;--sea-deep:#0a3f52;--sun:#f6a04c;--sun-ink:#1a1200;--ok:#5fc48a;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:18px;line-height:1.55;margin:0}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0;text-wrap:balance}
+h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:700}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:600}
+h3{font-size:1.2rem;font-weight:600}
+p{margin:0}
+a{color:var(--sea)}
+.wrap{max-width:1100px;margin-inline:auto;padding-inline:20px}
+section{padding-block:72px}
+.eyebrow{font-family:var(--display);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sea);font-weight:600}
+.lead{font-size:1.2rem;color:var(--muted);max-width:60ch}
+.stack{display:grid;gap:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:14px 26px;border-radius:14px;font-family:var(--display);font-weight:600;font-size:1.05rem;text-decoration:none;border:2px solid transparent;cursor:pointer}
+.btn-sun{background:var(--sun);color:var(--sun-ink)}
+.btn-sea{background:var(--sea);color:#fff}
+.btn-ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--fg);text-decoration:none}
+.brand svg{width:34px;height:34px}
+nav{display:flex;gap:18px;font-family:var(--display);font-size:.95rem}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--fg)}
+.call-pill{background:var(--sea);color:#fff;border-radius:999px;padding:10px 16px;font-family:var(--display);font-weight:600;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+@media (max-width:760px){nav{display:none}}
+
+/* hero */
+.hero{padding-block:56px 72px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero-art{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:24px;overflow:hidden;background:linear-gradient(160deg,#9ed3e6 0%,#d9ecf3 45%,#f3dcb5 100%)}
+.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+.photo-note{position:absolute;left:12px;bottom:12px;background:rgba(23,37,50,.78);color:#fff;font-size:.78rem;padding:6px 10px;border-radius:8px;font-family:var(--display)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--muted);font-size:.95rem}
+.trust span{display:inline-flex;align-items:center;gap:8px}
+.trust span::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--ok);flex:none}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}}
+
+/* how it works */
+.band{background:var(--surface);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.step{display:grid;gap:10px;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--bg)}
+.step .n{font-family:var(--display);font-size:2rem;font-weight:700;color:var(--sun);line-height:1}
+.step p{color:var(--muted)}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* difference */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.quote-card{background:var(--sea-deep);color:#fff;border-radius:24px;padding:36px;display:grid;gap:14px}
+.quote-card .big{font-family:var(--display);font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;line-height:1.2}
+.quote-card small{color:#bcd6e0}
+.checks{display:grid;gap:14px;list-style:none;padding:0;margin:0}
+.checks li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.checks li svg{width:28px;height:28px;flex:none}
+.checks strong{font-family:var(--display);font-weight:600}
+.checks span{color:var(--muted);display:block}
+@media (max-width:760px){.split{grid-template-columns:1fr}}
+
+/* rates */
+.rates{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rate{display:grid;gap:8px;padding:26px;border-radius:18px;border:1px solid var(--line);background:var(--surface)}
+.rate.featured{border:2px solid var(--sun)}
+.rate .price{font-family:var(--display);font-size:2.4rem;font-weight:700;font-variant-numeric:tabular-nums}
+.rate .price small{font-size:1rem;color:var(--muted);font-weight:500}
+.rate ul{margin:8px 0 0;padding-left:20px;color:var(--muted)}
+.tag{display:inline-block;background:var(--sun);color:var(--sun-ink);font-family:var(--display);font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:999px;letter-spacing:.06em;text-transform:uppercase;justify-self:start}
+.placeholder{color:var(--muted);font-size:.85rem;font-style:italic}
+@media (max-width:760px){.rates{grid-template-columns:1fr}}
+
+/* quote */
+.quote-form{display:grid;grid-template-columns:1fr 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px}
+.field{display:grid;gap:6px}
+.field label{font-family:var(--display);font-weight:600;font-size:.95rem}
+.field input,.field select{font:inherit;font-size:1.05rem;padding:14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);min-height:54px;width:100%}
+.full{grid-column:1/-1}
+.estimate{grid-column:1/-1;display:grid;gap:10px;padding:20px;border-radius:14px;background:var(--bg);border:1px dashed var(--line)}
+.estimate .amt{font-family:var(--display);font-size:2rem;font-weight:700;font-variant-numeric:tabular-nums}
+.estimate .amt small{font-size:1rem;color:var(--muted);font-weight:500}
+textarea{font:inherit;width:100%;min-height:110px;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);resize:vertical}
+.copy-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.toast{font-size:.9rem;color:var(--ok);font-family:var(--display)}
+@media (max-width:760px){.quote-form{grid-template-columns:1fr}}
+
+/* faq */
+details{border-top:1px solid var(--line);padding-block:16px}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-family:var(--display);font-weight:600;font-size:1.1rem;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--sun);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin-top:10px;color:var(--muted);max-width:65ch}
+
+/* contact */
+.contact-card{background:var(--sea);color:#fff;border-radius:28px;padding:44px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.contact-card h2{color:#fff}
+.contact-card p{color:#d6e8ef}
+.phone-big{font-family:var(--display);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.02em;color:#fff;text-decoration:none;display:block}
+.contact-side{display:grid;gap:12px}
+.contact-side .btn-sun{width:100%}
+.copy-btn{background:transparent;border:2px solid rgba(255,255,255,.5);color:#fff;border-radius:12px;padding:10px 16px;font-family:var(--display);font-weight:600;cursor:pointer;min-height:48px}
+@media (max-width:760px){.contact-card{grid-template-columns:1fr;padding:30px}}
+
+/* legal */
+.legal-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.legal-tabs button{font-family:var(--display);font-weight:600;font-size:.95rem;padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;min-height:44px}
+.legal-tabs button[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.legal-doc{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:75ch;font-size:1rem}
+.legal-doc h3{margin-bottom:6px}
+.legal-doc h4{font-family:var(--display);font-size:1rem;margin:20px 0 6px}
+.legal-doc p,.legal-doc li{color:var(--muted)}
+.legal-doc ol,.legal-doc ul{padding-left:22px;margin:0}
+.legal-doc .fill{background:color-mix(in srgb,var(--sun) 25%,transparent);border-radius:4px;padding:0 4px;color:var(--fg)}
+.draft{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:2px 8px;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;font-family:var(--display);color:var(--muted);margin-bottom:12px}
+
+footer{padding-block:36px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.btn-sun:hover{transform:translateY(-1px);transition:transform .15s}}
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Scott Mobility Scooters home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="var(--sea)"/><path d="M11 25h6l2-8h8l1.5 5.5M11 25a3 3 0 1 0 6 0M23 25a3 3 0 1 0 6 0" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 17V12h4" stroke="var(--sun)" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+      Scott Mobility
+    </a>
+    <nav aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#why">Why us</a>
+      <a href="#about">Why rent ahead</a>
+      <a href="#rates">Rates</a>
+      <a href="#quote">Get a quote</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="call-pill" href="tel:+10000000000" data-phone>Call (000) 000-0000</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="stack" style="gap:22px">
+      <span class="eyebrow">Mobility scooter rentals · delivered to your Anaheim hotel</span>
+      <h1>Your scooter is waiting at the hotel when you get there.</h1>
+      <p class="lead">Scott Mobility Scooters brings a fully charged mobility scooter straight to your Anaheim hotel, resort, or vacation rental. No park counter, no line, no sold-out sign. Book by phone in two minutes.</p>
+      <div class="cta-row">
+        <a class="btn btn-sun" href="tel:+10000000000" data-phone-link>Call to book</a>
+        <a class="btn btn-ghost" href="#quote">Request a quote</a>
+      </div>
+      <div class="trust">
+        <span>Free hotel drop-off &amp; pickup</span>
+        <span>$75/day · 8 hours guaranteed</span>
+        <span>Fully charged, sanitized, ready to ride</span>
+        <span>Licensed &amp; insured LLC</span>
+      </div>
+    </div>
+    <div class="hero-art" role="img" aria-label="Illustration of a mobility scooter parked under a hotel entrance canopy">
+      <svg viewBox="0 0 400 300" aria-hidden="true">
+        <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fcbe0"/><stop offset="1" stop-color="#e9f3f7"/></linearGradient></defs>
+        <rect width="400" height="300" fill="url(#sky)"/>
+        <circle cx="330" cy="60" r="28" fill="#f8c35a"/>
+        <rect x="0" y="210" width="400" height="90" fill="#e7cf9b"/>
+        <rect x="40" y="70" width="200" height="140" fill="#f3efe4" stroke="#d9cfb5" stroke-width="2"/>
+        <rect x="55" y="85" width="30" height="30" fill="#bfe0ee"/><rect x="105" y="85" width="30" height="30" fill="#bfe0ee"/><rect x="155" y="85" width="30" height="30" fill="#bfe0ee"/><rect x="205" y="85" width="22" height="30" fill="#bfe0ee"/>
+        <rect x="55" y="130" width="30" height="30" fill="#bfe0ee"/><rect x="105" y="130" width="30" height="30" fill="#bfe0ee"/><rect x="155" y="130" width="30" height="30" fill="#bfe0ee"/><rect x="205" y="130" width="22" height="30" fill="#bfe0ee"/>
+        <rect x="110" y="170" width="60" height="40" fill="#7fb6c9"/>
+        <path d="M30 170 L250 170 L270 150 L10 150 Z" fill="#0f5b74"/>
+        <rect x="20" y="170" width="6" height="40" fill="#0f5b74"/><rect x="252" y="170" width="6" height="40" fill="#0f5b74"/>
+        <text x="140" y="164" text-anchor="middle" font-family="Lexend,sans-serif" font-size="11" fill="#fff" font-weight="600">HOTEL</text>
+        <g transform="translate(250,160)">
+          <rect x="0" y="40" width="90" height="22" rx="8" fill="#0f5b74"/>
+          <rect x="18" y="12" width="40" height="30" rx="6" fill="#f28c28"/>
+          <rect x="10" y="4" width="48" height="10" rx="4" fill="#f28c28"/>
+          <path d="M70 40 L82 8" stroke="#172532" stroke-width="4" stroke-linecap="round"/>
+          <rect x="72" y="2" width="22" height="7" rx="3" fill="#172532"/>
+          <rect x="0" y="30" width="18" height="12" rx="3" fill="#172532"/>
+          <circle cx="16" cy="66" r="11" fill="#172532"/><circle cx="16" cy="66" r="4" fill="#9fb2bd"/>
+          <circle cx="76" cy="66" r="11" fill="#172532"/><circle cx="76" cy="66" r="4" fill="#9fb2bd"/>
+        </g>
+      </svg>
+      <span class="photo-note">Stock photo goes here · scooter at hotel entrance</span>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="wrap stack" style="gap:30px">
+    <div class="stack" style="gap:8px">
+      <span class="eyebrow">How it works</span>
+      <h2>Three steps. No forms, no counters.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><h3>Call or text us</h3><p>Tell us your hotel, your dates, and how many riders. We confirm availability on the spot and give you a price.</p></div>
+      <div class="step"><span class="n">2</span><h3>We deliver to your hotel</h3><p>Your scooter arrives fully charged at the front desk or bell stand before you check in. We walk you through the controls in five minutes.</p></div>
+      <div class="step"><span class="n">3</span><h3>Ride, then leave it with us</h3><p>Park it at the hotel on checkout day. We pick it up. Nothing to return, nothing to carry.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap split">
+    <div class="quote-card">
+      <span class="eyebrow" style="color:#f6a04c">Why riders call us first</span>
+      <p class="big">Other rental counters run out. We bring the scooter to you, reserved under your name.</p>
+      <small>Every booking is held for your dates. We never overbook a scooter.</small>
+    </div>
+    <ul class="checks">
+      <li><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="var(--sun)"/><path d="M8 14.5l4 4 8-9" stroke="var(--sun-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Hotel, resort, and vacation rental delivery</strong><span>Drop-off and pickup are included in every rental. No surcharge for the trip out.</span></div></li>
+      <li><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="var(--sun)"/><path d="M8 14.5l4 4 8-9" stroke="var(--sun-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Built for a full day out</strong><span>Every rental is guaranteed 8 hours of use on a charge. Charged overnight and tested before it leaves us.</span></div></li>
+      <li><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="var(--sun)"/><path d="M8 14.5l4 4 8-9" stroke="var(--sun-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>FDA-registered mobility scooters</strong><span>We rent FDA-registered Class II mobility devices, not toys or e-scooters.</span></div></li>
+      <li><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="var(--sun)"/><path d="M8 14.5l4 4 8-9" stroke="var(--sun-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Licensed and insured</strong><span>Scott Mobility Scooters LLC carries liability insurance on every rental.</span></div></li>
+      <li><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="var(--sun)"/><path d="M8 14.5l4 4 8-9" stroke="var(--sun-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>One phone number for everything</strong><span>Booking, questions, a swap if anything goes wrong. You talk to Scott, not a call center.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" id="rates">
+  <div class="wrap stack" style="gap:30px">
+    <div class="stack" style="gap:8px">
+      <span class="eyebrow">Rates</span>
+      <h2>Simple pricing. Delivery included.</h2>
+      <p class="lead">One flat rate. No tiers, no add-ons, no surprises at the hotel.</p>
+    </div>
+    <div class="rates" style="grid-template-columns:minmax(0,520px);justify-content:center">
+      <div class="rate featured"><span class="tag">Flat rate</span><h3>Any day, any hotel in Anaheim</h3><p class="price">$75<small> / day</small></p><ul><li><strong>Guaranteed 8 hours of use</strong> per charge. Enough for a full park day.</li><li>Hotel drop-off &amp; pickup included</li><li>Charger, basket &amp; cup holder included</li><li>Free swap if anything goes wrong</li><li>Multi-day? Same rate, every day</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="quote">
+  <div class="wrap stack" style="gap:30px">
+    <div class="stack" style="gap:8px">
+      <span class="eyebrow">Request a quote</span>
+      <h2>Get your price in 10 seconds.</h2>
+      <p class="lead">Fill this in, then call or text us the summary. We'll confirm your dates right away.</p>
+    </div>
+    <form class="quote-form" id="quoteForm" novalidate>
+      <div class="field"><label for="hotel">Hotel or rental address</label><input id="hotel" name="hotel" placeholder="Hotel name or street address" autocomplete="off"></div>
+      <div class="field"><label for="riders">Number of scooters</label><select id="riders" name="riders"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4 or more</option></select></div>
+      <div class="field"><label for="start">Delivery date</label><input id="start" name="start" type="date"></div>
+      <div class="field"><label for="end">Pickup date</label><input id="end" name="end" type="date"></div>
+      <div class="estimate">
+        <span class="eyebrow">Your estimate</span>
+        <p class="amt" id="amt">$0<small> total</small></p>
+        <p id="amtNote" class="placeholder">Pick your dates to see a price.</p>
+      </div>
+      <div class="field full"><label for="summary">Text this to us</label><textarea id="summary" readonly>Hi Scott, I'd like to book a scooter.</textarea></div>
+      <div class="copy-row full">
+        <button type="button" class="btn btn-sea" id="copyBtn">Copy summary</button>
+        <a class="btn btn-sun" href="tel:+10000000000" data-phone-link>Call now</a>
+        <span class="toast" id="toast" hidden>Copied. Paste it into a text to us.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<section class="band" id="about">
+  <div class="wrap split">
+    <div class="stack" style="gap:14px">
+      <span class="eyebrow">Why rent before you go</span>
+      <h2>Getting a scooter at the park is the hardest part of the day.</h2>
+      <p class="lead">Park rental counters open with the gates, hand out scooters first come first served, and are usually empty by mid-morning. That means lining up early, hoping one is left, and walking back to the counter to return it before closing.</p>
+      <p class="lead">We skip all of that. Your scooter is at your Anaheim hotel the night before, charged and reserved under your name. Ride it from the lobby, through the gates, around the park, and back to your room. Park days are long; you should spend yours enjoying them, not chasing a rental.</p>
+    </div>
+    <div class="hero-art" style="aspect-ratio:1/1;background:linear-gradient(160deg,#f3dcb5,#e7cf9b)" role="img" aria-label="Placeholder for a photo of a scooter at a theme park entrance">
+      <span class="photo-note">Stock photo goes here · rider at a park entrance</span>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap stack" style="gap:24px">
+    <div class="stack" style="gap:8px">
+      <span class="eyebrow">Questions</span>
+      <h2>Before you call</h2>
+    </div>
+    <div>
+      <details open><summary>Do you deliver to my hotel?</summary><p>Yes. We deliver to hotels, resorts, and vacation rentals throughout Anaheim and the resort district. Tell us where you're staying when you call and we'll confirm.</p></details>
+      <details><summary>How far will the scooter go on one charge?</summary><p>We guarantee 8 hours of use on a full charge, enough for a full park day. Plug it in overnight in your room using the charger we provide and it's ready again by morning.</p></details>
+      <details><summary>Do I need a license or a medical note?</summary><p>No license or prescription is needed to rent a mobility scooter. Riders must be adults and sign our rental agreement and waiver at delivery.</p></details>
+      <details><summary>What if the scooter stops working?</summary><p>Call the number on the scooter. We bring a replacement to your hotel. Swaps are free.</p></details>
+      <details><summary>Can I change or cancel my dates?</summary><p>Yes. Call us and we'll move your booking. See the rental agreement below for the cancellation window.</p></details>
+      <details><summary>Is there a deposit?</summary><p>A refundable deposit is held at delivery and released at pickup. The amount is listed in the rental agreement.</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-card">
+      <div class="stack" style="gap:12px">
+        <span class="eyebrow" style="color:#f6a04c">Book by phone</span>
+        <h2>One call. Scooter at your hotel.</h2>
+        <a class="phone-big" href="tel:+10000000000" data-phone-link data-phone>(000) 000-0000</a>
+        <p>Call or text, 7 days a week. Email: <span data-email>hello@scottmobility.com</span></p>
+      </div>
+      <div class="contact-side">
+        <a class="btn btn-sun" href="tel:+10000000000" data-phone-link>Call to book</a>
+        <button type="button" class="copy-btn" id="copyPhone">Copy phone number</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="legal">
+  <div class="wrap stack" style="gap:20px">
+    <div class="stack" style="gap:8px">
+      <span class="eyebrow">Legal</span>
+      <h2>Rental agreement, waiver, terms &amp; privacy</h2>
+      <p class="lead">Draft documents for Scott's review. Highlighted blanks need his details. Have a lawyer check these before launch.</p>
+    </div>
+    <div class="legal-tabs" role="tablist" aria-label="Legal documents">
+      <button role="tab" aria-selected="true" data-tab="agreement">Rental agreement</button>
+      <button role="tab" aria-selected="false" data-tab="waiver">Waiver</button>
+      <button role="tab" aria-selected="false" data-tab="terms">Terms of service</button>
+      <button role="tab" aria-selected="false" data-tab="privacy">Privacy policy</button>
+    </div>
+
+    <article class="legal-doc" id="doc-agreement" role="tabpanel">
+      <span class="draft">Draft</span>
+      <h3>Mobility Scooter Rental Agreement</h3>
+      <p>This agreement is between Scott Mobility Scooters LLC ("we", "us") and the renter named at delivery ("you").</p>
+      <h4>1. Rental period</h4><p>The rental begins at delivery and ends at the agreed pickup time. Late pickups beyond 2 hours are billed at the daily rate.</p>
+      <h4>2. Payment and deposit</h4><p>Full payment is due at delivery. A refundable deposit of <span class="fill">$___</span> is held and returned at pickup if the scooter comes back in the condition it was delivered, normal wear excepted.</p>
+      <h4>3. Delivery and pickup</h4><p>We deliver to and collect from the hotel, resort, or rental address you give us. You agree to have the scooter available at the agreed pickup time and location.</p>
+      <h4>4. Your responsibilities</h4><ul><li>Operate the scooter safely and only as instructed.</li><li>Keep it charged using the supplied charger.</li><li>Do not let anyone under 18, or anyone not named on this agreement, operate it.</li><li>Do not ride in rain, through standing water, on stairs, or on roads open to vehicle traffic.</li><li>Report any damage or malfunction to us immediately.</li></ul>
+      <h4>5. Damage, loss, and theft</h4><p>You are responsible for damage beyond normal wear, and for the full replacement cost of <span class="fill">$___</span> if the scooter is lost or stolen while in your care.</p>
+      <h4>6. Cancellation</h4><p>Cancel at least <span class="fill">24 hours</span> before delivery for a full refund. Later cancellations are charged one day's rate.</p>
+      <h4>7. Governing law</h4><p>This agreement is governed by the laws of the State of California. Rentals are provided in and around Anaheim, California.</p>
+      <p style="margin-top:16px">Renter signature: ____________________ &nbsp; Date: ________</p>
+    </article>
+
+    <article class="legal-doc" id="doc-waiver" role="tabpanel" hidden>
+      <span class="draft">Draft</span>
+      <h3>Release of Liability and Assumption of Risk</h3>
+      <p>In exchange for renting a mobility scooter from Scott Mobility Scooters LLC, I agree to the following:</p>
+      <ol>
+        <li><strong>I understand the risks.</strong> Operating a mobility scooter carries a risk of injury from tipping, collisions, uneven ground, weather, and the actions of others. I accept those risks.</li>
+        <li><strong>I am fit to operate it.</strong> I confirm I can safely operate the scooter, I have received instruction on its controls, and I am not under the influence of alcohol or drugs while operating it.</li>
+        <li><strong>I release Scott Mobility Scooters LLC</strong>, its owners, employees, and agents from any claims for injury, loss, or damage arising from my use of the scooter, except where caused by their gross negligence.</li>
+        <li><strong>I will indemnify</strong> Scott Mobility Scooters LLC against claims by third parties arising from my use of the scooter.</li>
+        <li><strong>This release is binding</strong> on me, my family, heirs, and representatives, and is governed by the laws of the State of California.</li>
+      </ol>
+      <p style="margin-top:16px">I have read this release and sign it freely.</p>
+      <p>Signature: ____________________ &nbsp; Date: ________</p>
+    </article>
+
+    <article class="legal-doc" id="doc-terms" role="tabpanel" hidden>
+      <span class="draft">Draft</span>
+      <h3>Terms of Service</h3>
+      <h4>Who we are</h4><p>Scott Mobility Scooters LLC, Anaheim, California. <span class="fill">mailing address</span>, <span class="fill">email</span>, <span class="fill">phone</span>.</p>
+      <h4>Using this website</h4><p>This site is for information and for contacting us to book. Our rate is $75 per day, with 8 hours of use guaranteed per charge; your booking is confirmed by phone. We may update prices and availability at any time.</p>
+      <h4>Bookings</h4><p>A booking is confirmed only when we say so by phone or text. The Rental Agreement and Release of Liability govern every rental and are signed at delivery.</p>
+      <h4>Eligibility</h4><p>You must be 18 or older to book a rental.</p>
+      <h4>Limitation of liability</h4><p>To the extent permitted by law, our liability to you for any claim related to this website or a rental is limited to the amount you paid for that rental.</p>
+      <h4>Changes</h4><p>We may update these terms. The version on this page is the current one.</p>
+      <p style="margin-top:16px">Last updated: <span class="fill">launch date</span></p>
+    </article>
+
+    <article class="legal-doc" id="doc-privacy" role="tabpanel" hidden>
+      <span class="draft">Draft</span>
+      <h3>Privacy Policy</h3>
+      <h4>What we collect</h4><p>When you call, text, or book with us we collect your name, phone number, hotel or delivery address, rental dates, and payment details needed to complete the rental. This website itself does not collect your information or use tracking cookies.</p>
+      <h4>How we use it</h4><p>To deliver, support, and collect your rental, to process payment and deposits, and to contact you about your booking. We do not send marketing messages and we do not sell or share your information with anyone except the payment processor and as required by law.</p>
+      <h4>How long we keep it</h4><p>Rental records are kept for <span class="fill">___ years</span> for accounting and insurance purposes, then deleted.</p>
+      <h4>Your choices</h4><p>Ask us at any time to see, correct, or delete the information we hold about you by contacting <span class="fill">email</span>.</p>
+      <p style="margin-top:16px">Last updated: <span class="fill">launch date</span></p>
+    </article>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year">2026</span> Scott Mobility Scooters LLC · Anaheim, CA · Licensed &amp; insured</span>
+    <span><a href="#legal">Rental agreement</a> · <a href="#legal">Waiver</a> · <a href="#legal">Terms</a> · <a href="#legal">Privacy</a></span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- Fill these in when Scott has them ----
+  var PHONE_DISPLAY = "(000) 000-0000";
+  var PHONE_TEL = "+10000000000";
+  var EMAIL = "hello@scottmobility.com";
+  var RATE = 75; // flat $/day
+
+  document.querySelectorAll("[data-phone]").forEach(function(el){
+    el.textContent = el.classList.contains("call-pill") ? "Call " + PHONE_DISPLAY : PHONE_DISPLAY;
+  });
+  document.querySelectorAll("[data-phone-link]").forEach(function(a){ a.href = "tel:" + PHONE_TEL; });
+  document.querySelectorAll("[data-email]").forEach(function(el){ el.textContent = EMAIL; });
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // ---- Quote estimator ----
+  var f = document.getElementById("quoteForm");
+  var amt = document.getElementById("amt"), note = document.getElementById("amtNote"), sum = document.getElementById("summary");
+  function rateFor(days){ return RATE; }
+  function fmtDate(s){ if(!s) return ""; var p = s.split("-"); return p[1] + "/" + p[2] + "/" + p[0]; }
+  function update(){
+    var hotel = f.hotel.value.trim(), n = parseInt(f.riders.value,10), s = f.start.value, e = f.end.value;
+    var days = 0;
+    if (s && e){ days = Math.round((new Date(e) - new Date(s)) / 86400000); if (days < 1) days = 1; }
+    if (days){
+      var rate = rateFor(days), total = rate * days * n;
+      amt.innerHTML = "$" + total + "<small> total</small>";
+      note.textContent = n + " scooter" + (n>1?"s":"") + " × " + days + " day" + (days>1?"s":"") + " at $" + rate + "/day. 8 hours of use guaranteed daily. Hotel delivery and pickup included.";
+    } else {
+      amt.innerHTML = "$0<small> total</small>";
+      note.textContent = "Pick your dates to see a price.";
+    }
+    sum.value = "Hi Scott, I'd like to book " + n + " scooter" + (n>1?"s":"") +
+      (hotel ? " delivered to " + hotel : "") +
+      (s ? " from " + fmtDate(s) : "") + (e ? " to " + fmtDate(e) : "") +
+      (days ? ". Estimate on your site was $" + (rateFor(days)*days*n) + "." : ".");
+  }
+  f.addEventListener("input", update);
+  f.addEventListener("submit", function(ev){ ev.preventDefault(); update(); });
+  update();
+
+  function copyText(text, el, toastEl){
+    var done = function(){ if(toastEl){ toastEl.hidden = false; setTimeout(function(){ toastEl.hidden = true; }, 2500); } };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ if(el && el.select){ el.select(); } done(); });
+    } else { if(el && el.select){ el.select(); } done(); }
+  }
+  document.getElementById("copyBtn").addEventListener("click", function(){ copyText(sum.value, sum, document.getElementById("toast")); });
+  var cp = document.getElementById("copyPhone");
+  cp.addEventListener("click", function(){ copyText(PHONE_DISPLAY, null, null); cp.textContent = "Copied"; setTimeout(function(){ cp.textContent = "Copy phone number"; }, 2000); });
+
+  // ---- Legal tabs ----
+  var tabs = document.querySelectorAll(".legal-tabs [role=tab]");
+  tabs.forEach(function(t){
+    t.addEventListener("click", function(){
+      tabs.forEach(function(x){ x.setAttribute("aria-selected", x===t ? "true" : "false"); });
+      document.querySelectorAll(".legal-doc").forEach(function(d){ d.hidden = d.id !== "doc-" + t.dataset.tab; });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
