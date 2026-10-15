@@ -6,6 +6,7 @@
 <title>Scott Mobility Scooters</title>
 <meta name="description" content="Mobility scooter rentals delivered to your Anaheim hotel. $75/day, 8 hours of use guaranteed, hotel drop-off and pickup included. Book by phone.">
 <meta property="og:title" content="Scott Mobility Scooters · Anaheim hotel delivery">
+<meta property="og:image" content="https://scottmobilityscooters.com/img/hotel-entrance.jpg">
 <meta property="og:description" content="Skip the park rental line. Your scooter is waiting at your hotel. $75/day, delivery included.">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="canonical" href="https://scottmobilityscooters.com/">
@@ -71,7 +72,12 @@ nav a:hover{color:var(--fg)}
 .hero{padding-block:56px 72px}
 .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
 .hero-art{position:relative;aspect-ratio:4/3;max-width:100%;border-radius:24px;overflow:hidden;background:linear-gradient(160deg,#9ed3e6 0%,#d9ecf3 45%,#f3dcb5 100%)}
-.hero-art svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-art svg,.hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gallery figure{margin:0;display:grid;gap:8px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;display:block}
+.gallery figcaption{font-size:.95rem;color:var(--muted)}
+@media (max-width:760px){.gallery{grid-template-columns:1fr}}
 .photo-note{position:absolute;left:12px;bottom:12px;background:rgba(23,37,50,.78);color:#fff;font-size:.78rem;padding:6px 10px;border-radius:8px;font-family:var(--display)}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px}
 .trust{display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--muted);font-size:.95rem}
@@ -173,6 +179,7 @@ footer a{color:var(--muted)}
       <a href="#how">How it works</a>
       <a href="#why">Why us</a>
       <a href="#about">Why rent ahead</a>
+      <a href="#gallery">Photos</a>
       <a href="#rates">Rates</a>
       <a href="#quote">Book</a>
       <a href="#faq">FAQ</a>
@@ -199,32 +206,7 @@ footer a{color:var(--muted)}
         <span>Licensed &amp; insured LLC</span>
       </div>
     </div>
-    <div class="hero-art" role="img" aria-label="Illustration of a mobility scooter parked under a hotel entrance canopy">
-      <svg viewBox="0 0 400 300" aria-hidden="true">
-        <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fcbe0"/><stop offset="1" stop-color="#e9f3f7"/></linearGradient></defs>
-        <rect width="400" height="300" fill="url(#sky)"/>
-        <circle cx="330" cy="60" r="28" fill="#f8c35a"/>
-        <rect x="0" y="210" width="400" height="90" fill="#e7cf9b"/>
-        <rect x="40" y="70" width="200" height="140" fill="#f3efe4" stroke="#d9cfb5" stroke-width="2"/>
-        <rect x="55" y="85" width="30" height="30" fill="#bfe0ee"/><rect x="105" y="85" width="30" height="30" fill="#bfe0ee"/><rect x="155" y="85" width="30" height="30" fill="#bfe0ee"/><rect x="205" y="85" width="22" height="30" fill="#bfe0ee"/>
-        <rect x="55" y="130" width="30" height="30" fill="#bfe0ee"/><rect x="105" y="130" width="30" height="30" fill="#bfe0ee"/><rect x="155" y="130" width="30" height="30" fill="#bfe0ee"/><rect x="205" y="130" width="22" height="30" fill="#bfe0ee"/>
-        <rect x="110" y="170" width="60" height="40" fill="#7fb6c9"/>
-        <path d="M30 170 L250 170 L270 150 L10 150 Z" fill="#0f5b74"/>
-        <rect x="20" y="170" width="6" height="40" fill="#0f5b74"/><rect x="252" y="170" width="6" height="40" fill="#0f5b74"/>
-        <text x="140" y="164" text-anchor="middle" font-family="Lexend,sans-serif" font-size="11" fill="#fff" font-weight="600">HOTEL</text>
-        <g transform="translate(250,160)">
-          <rect x="0" y="40" width="90" height="22" rx="8" fill="#0f5b74"/>
-          <rect x="18" y="12" width="40" height="30" rx="6" fill="#f28c28"/>
-          <rect x="10" y="4" width="48" height="10" rx="4" fill="#f28c28"/>
-          <path d="M70 40 L82 8" stroke="#172532" stroke-width="4" stroke-linecap="round"/>
-          <rect x="72" y="2" width="22" height="7" rx="3" fill="#172532"/>
-          <rect x="0" y="30" width="18" height="12" rx="3" fill="#172532"/>
-          <circle cx="16" cy="66" r="11" fill="#172532"/><circle cx="16" cy="66" r="4" fill="#9fb2bd"/>
-          <circle cx="76" cy="66" r="11" fill="#172532"/><circle cx="76" cy="66" r="4" fill="#9fb2bd"/>
-        </g>
-      </svg>
-      <span class="photo-note">Stock photo goes here · scooter at hotel entrance</span>
-    </div>
+    <div class="hero-art"><img src="img/hotel-entrance.jpg" alt="Red mobility scooter parked on the Disneyland Hotel entrance rug" loading="eager"></div>
   </div>
 </section>
 
@@ -256,6 +238,20 @@ footer a{color:var(--muted)}
       <li><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="var(--sun)"/><path d="M8 14.5l4 4 8-9" stroke="var(--sun-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Licensed and insured</strong><span>Scott Mobility Scooters LLC carries liability insurance on every rental.</span></div></li>
       <li><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="13" fill="var(--sun)"/><path d="M8 14.5l4 4 8-9" stroke="var(--sun-ink)" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div><strong>Book in a minute, online</strong><span>No phone tag. Pay once on the site, get a confirmation email, and the scooter shows up.</span></div></li>
     </ul>
+  </div>
+</section>
+
+<section class="band" id="gallery">
+  <div class="wrap stack" style="gap:24px">
+    <div class="stack" style="gap:8px">
+      <span class="eyebrow">The scooter</span>
+      <h2>The one you'll be riding. Seen at the parks.</h2>
+    </div>
+    <div class="gallery">
+      <figure><img src="img/closeup.jpg" alt="Close-up of the red four-wheel mobility scooter with front basket and padded seat"><figcaption>Four wheels, padded swivel seat, front basket, headlight.</figcaption></figure>
+      <figure><img src="img/lobby-statues.jpg" alt="Mobility scooter in a hotel lobby next to bronze statues"><figcaption>Waiting in the lobby, charged and ready.</figcaption></figure>
+      <figure><img src="img/disneyland-gate.jpg" alt="Mobility scooter in front of the Disneyland entrance with pumpkin decorations"><figcaption>Rides from the hotel straight through the gates.</figcaption></figure>
+    </div>
   </div>
 </section>
 
@@ -307,9 +303,7 @@ footer a{color:var(--muted)}
       <p class="lead">Park rental counters open with the gates, hand out scooters first come first served, and are usually empty by mid-morning. That means lining up early, hoping one is left, and walking back to the counter to return it before closing.</p>
       <p class="lead">We skip all of that. Your scooter is at your Anaheim hotel the night before, charged and reserved under your name. Ride it from the lobby, through the gates, around the park, and back to your room. Park days are long; you should spend yours enjoying them, not chasing a rental.</p>
     </div>
-    <div class="hero-art" style="aspect-ratio:1/1;background:linear-gradient(160deg,#f3dcb5,#e7cf9b)" role="img" aria-label="Placeholder for a photo of a scooter at a theme park entrance">
-      <span class="photo-note">Stock photo goes here · rider at a park entrance</span>
-    </div>
+    <div class="hero-art" style="aspect-ratio:1/1"><img src="img/dca-gate.jpg" alt="Mobility scooter in front of the Disney California Adventure entrance gates"></div>
   </div>
 </section>
 
@@ -337,7 +331,7 @@ footer a{color:var(--muted)}
       <div class="stack" style="gap:12px">
         <span class="eyebrow" style="color:#f6a04c">Book online</span>
         <h2>One tap. Scooter at your hotel.</h2>
-                <p>$75 per day, delivery included, confirmation by email. Already booked and need us? Email <span data-email>scottmobility@outlook.com</span> or text <span data-phone>(000) 000-0000</span>.</p>
+                <p>$75 per day, delivery included, confirmation by email. Already booked and need us? Email <span data-email>scottmobility@outlook.com</span> or text <span data-phone>(714) 917-7763</span>.</p>
       </div>
       <div class="contact-side">
         <a class="btn btn-sun" href="https://square.link/u/I9et7Gd7" target="_blank" rel="noopener">Book now · $75</a>
@@ -393,7 +387,7 @@ footer a{color:var(--muted)}
     <article class="legal-doc" id="doc-terms" role="tabpanel" hidden>
       <span class="draft">Draft</span>
       <h3>Terms of Service</h3>
-      <h4>Who we are</h4><p>Scott Mobility Scooters LLC, Anaheim, California. <span class="fill">mailing address</span>, scottmobility@outlook.com, <span class="fill">phone</span>.</p>
+      <h4>Who we are</h4><p>Scott Mobility Scooters LLC, Anaheim, California. <span class="fill">mailing address</span>, scottmobility@outlook.com, (714) 917-7763.</p>
       <h4>Using this website</h4><p>Bookings are made and paid on this site through Square's secure checkout. Our rate is $75 per day, with 8 hours of use guaranteed per charge; your booking is confirmed by email. We may update prices and availability at any time.</p>
       <h4>Bookings</h4><p>A booking is confirmed when your Square payment succeeds and you receive the confirmation email. The Rental Agreement and Release of Liability govern every rental and are signed at delivery.</p>
       <h4>Eligibility</h4><p>You must be 18 or older to book a rental.</p>
@@ -425,8 +419,8 @@ footer a{color:var(--muted)}
 <script>
 (function(){
   // ---- Fill these in when Scott has them ----
-  var PHONE_DISPLAY = "(000) 000-0000";
-  var PHONE_TEL = "+10000000000";
+  var PHONE_DISPLAY = "(714) 917-7763";
+  var PHONE_TEL = "+17149177763";
   var EMAIL = "scottmobility@outlook.com";
   var RATE = 75; // flat $/day
 
