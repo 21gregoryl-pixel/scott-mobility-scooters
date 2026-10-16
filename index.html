@@ -10,7 +10,12 @@
 <meta property="og:description" content="Skip the park rental line. Your scooter is waiting at your hotel. $75/day, delivery included.">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="canonical" href="https://scottmobilityscooters.com/">
-<style>img{max-width:100%}[hidden]{display:none!important}</style>
+<style>img{max-width:100%}[hidden]{display:none!important}.rentme{display:grid;grid-template-columns:minmax(0,480px) 1fr;gap:48px;align-items:center}
+.rentme img{max-width:100%;height:auto;border-radius:20px;background:#fff}
+.bigphone{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,7vw,3.6rem);letter-spacing:.02em;font-variant-numeric:tabular-nums;line-height:1}
+.bigsite{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,3.5vw,1.8rem);color:var(--sea)}
+@media (max-width:760px){.rentme{grid-template-columns:1fr}.rentme img{width:100%}}
+</style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
 /* Layout: one long page, every section a full-width band; big type and big tap targets for tourists on phones in bright sun. */
