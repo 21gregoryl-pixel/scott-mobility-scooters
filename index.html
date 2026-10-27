@@ -10,6 +10,7 @@
 <meta property="og:description" content="Skip the park rental line. Your scooter is waiting at your hotel. $75/day, delivery included.">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="canonical" href="https://scottmobilityscooters.com/">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="">
 <style>img{max-width:100%}[hidden]{display:none!important}.rentme{display:grid;grid-template-columns:minmax(0,480px) 1fr;gap:48px;align-items:center}
 .rentme img{max-width:100%;height:auto;border-radius:20px;background:#fff}
 .bigphone{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,7vw,3.6rem);letter-spacing:.02em;font-variant-numeric:tabular-nums;line-height:1}
@@ -109,11 +110,21 @@ nav a:hover{color:var(--fg)}
 .checks strong{font-family:var(--display);font-weight:600}
 .checks span{color:var(--muted);display:block}
 @media (max-width:760px){.split{grid-template-columns:1fr}}
-.loc-address{font-style:normal;font-size:1.1rem;line-height:1.5;padding:16px 20px;border-left:4px solid var(--sun);background:var(--bg);border-radius:0 14px 14px 0}
+.map-wrap{display:grid;gap:12px}
+.service-map{width:100%;height:520px;border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#dfeaf0;isolation:isolate}
+@media (max-width:760px){.service-map{height:420px}}
+.map-legend{display:flex;flex-wrap:wrap;gap:18px;font-size:.9rem;font-family:var(--display)}
+.map-legend span{display:inline-flex;align-items:center;gap:8px}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+.dot-hotel{background:#1f6f8b}.dot-base{background:var(--sun)}.dot-area{background:rgba(31,111,139,.18);border-color:#1f6f8b}
+.loc-row{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between}
+.loc-address{font-style:normal;font-size:1.05rem;line-height:1.5;padding:14px 20px;border-left:4px solid var(--sun);background:var(--bg);border-radius:0 14px 14px 0}
 .loc-actions{display:flex;flex-wrap:wrap;gap:12px}
-.loc-note{color:var(--muted,inherit);font-size:.95rem;opacity:.85}
-.map-frame{border-radius:24px;overflow:hidden;border:1px solid var(--line);background:var(--bg);aspect-ratio:600/420}
-.map-frame iframe{display:block;width:100%;height:100%}
+.loc-note{font-size:.9rem;opacity:.8}
+.leaflet-popup-content{font-family:var(--body,inherit);font-size:.92rem;line-height:1.4;margin:12px 14px}
+.leaflet-popup-content strong{display:block;font-family:var(--display);margin-bottom:2px}
+.leaflet-popup-content a{color:var(--sea-deep);font-weight:600}
+.leaflet-container{font:inherit}
 
 /* rates */
 .rates{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -193,7 +204,7 @@ footer a{color:var(--muted)}
       <a href="#rentme">Rent me</a>
       <a href="#rates">Rates</a>
       <a href="#quote">Book</a>
-      <a href="#location">Location</a>
+      <a href="#location">Hotels we serve</a>
       <a href="#faq">FAQ</a>
     </nav>
     <a class="call-pill" href="https://book.squareup.com/appointments/dup2nzgyfiop99/location/LGDR8W3ANGE3V" target="_blank" rel="noopener">Book now · $75</a>
@@ -232,7 +243,7 @@ footer a{color:var(--muted)}
     <div class="steps">
       <div class="step"><span class="n">1</span><h3>Book online</h3><p>Tap Book now, pick your delivery date, enter your hotel, and pay $75 by card, Apple Pay, or Google Pay. Takes about a minute. We only have a few scooters, so a date disappears once it's fully booked.</p></div>
       <div class="step"><span class="n">2</span><h3>We deliver to your hotel</h3><p>You get a confirmation email right away. Your scooter arrives fully charged at the front desk or bell stand on your delivery date.</p></div>
-      <div class="step"><span class="n">3</span><h3>Ride, then leave it with us</h3><p>Park it at the hotel on checkout day. We pick it up. Nothing to return, nothing to carry. Prefer to grab it yourself? Pickup and return at 1567 Harbor Blvd, Anaheim works too.</p></div>
+      <div class="step"><span class="n">3</span><h3>Ride, then leave it with us</h3><p>Park it at the hotel on checkout day. We pick it up. Nothing to return, nothing to carry.</p></div>
     </div>
   </div>
 </section>
@@ -341,13 +352,12 @@ footer a{color:var(--muted)}
       <h2>Before you call</h2>
     </div>
     <div>
-      <details open><summary>Do you deliver to my hotel?</summary><p>Yes. We deliver to any hotel, resort, or vacation rental within about a 10-minute drive of the parks, not just Anaheim proper. That covers the whole resort district and the surrounding area: Disneyland Hotel, Pixar Place, Grand Californian, Hilton Anaheim, Westin Anaheim Resort, Sheraton Park, Four Points, Holiday Inn &amp; Suites, Best Western Park Place, Courtyard, Days Inn, Majestic Garden, and the rest. Most of Garden Grove, Orange, and Buena Park fall inside that. Not sure? Book it and we'll confirm or refund you in full. Enter where you're staying at checkout and we'll confirm.</p></details>
+      <details open><summary>Do you deliver to my hotel?</summary><p>Yes. We deliver to any hotel, resort, or vacation rental within a mile of Disneyland, and most places within about a 10-minute drive of the parks. See the <a href="#location">map</a> for the hotels we serve every day. That covers the whole resort district and the surrounding area: Disneyland Hotel, Pixar Place, Grand Californian, Hilton Anaheim, Westin Anaheim Resort, Sheraton Park, Four Points, Holiday Inn &amp; Suites, Best Western Park Place, Courtyard, Days Inn, Majestic Garden, and the rest. Most of Garden Grove, Orange, and Buena Park fall inside that. Not sure? Book it and we'll confirm or refund you in full. Enter where you're staying at checkout and we'll confirm.</p></details>
       <details><summary>How far will the scooter go on one charge?</summary><p>A full charge gives roughly 8 hours of typical use, enough for most park days. The battery works a little harder for heavier riders, on hills, and at top speed, so range runs shorter in those cases and longer in the opposite ones. Plan on a bit less than 8 hours if you're near the 360 lb capacity or spend the day at full throttle. Plug it in overnight in your room using the charger we provide and it's ready again by morning.</p></details>
       <details><summary>Is there a weight limit?</summary><p>Yes, 360 lb. That covers the large majority of riders comfortably. If you're close to it, the scooter still works fine; you'll just see a shorter battery range, so charge fully each night and take the flat routes when you can.</p></details>
       <details><summary>Do I need a license or a medical note?</summary><p>No license or prescription is needed to rent a mobility scooter. Riders must be adults and sign our rental agreement and waiver at delivery.</p></details>
       <details><summary>What if the scooter stops working?</summary><p>Text (714) 917-7763 and we bring a replacement to you, at your hotel or at the gates of the theme park, whichever is closer to where you are. No charge, no paperwork, you keep your day.</p></details>
       <details><summary>Can I change or cancel my dates?</summary><p>Yes. Reply to your confirmation email or text the number on it and we'll move your dates. See the rental agreement below for the cancellation window.</p></details>
-      <details><summary>Can I pick the scooter up instead of having it delivered?</summary><p>Yes. We're at 1567 Harbor Blvd, Anaheim, CA 92802, a few minutes from the parks. Book online as usual and add a note that you'd like to pick up. Open 7 AM to 11 PM every day.</p></details>
       <details><summary>How do I book and pay?</summary><p>Tap any Book now button. Booking is run by Square: pick your delivery date, enter your hotel and card, and you get a confirmation email instantly. $75 per day, paid at booking, no deposit. If a date doesn't show up, every scooter is already reserved that day.</p></details>
       <details><summary>I need more than one day or more than one scooter.</summary><p>Each booking reserves one scooter for one day. For more days, book each date you need. For more scooters, book the same date again, once per scooter. Each one is held under your name.</p></details>
     </div>
@@ -355,29 +365,29 @@ footer a{color:var(--muted)}
 </section>
 
 <section class="band" id="location">
-  <div class="wrap">
-    <div class="split">
-      <div class="stack" style="gap:14px">
-        <span class="eyebrow">Find us · Anaheim</span>
-        <h2>Right on Harbor Blvd, minutes from the parks.</h2>
-        <p class="lead">We deliver to your hotel, but you can also pick up and drop off your scooter at our Anaheim location if that's easier for you.</p>
-        <address class="loc-address">
-          <strong>Scott Mobility Scooters</strong><br>
-          1567 Harbor Blvd<br>
-          Anaheim, CA 92802<br>
-          United States
-        </address>
-        <div class="loc-actions">
-          <a class="btn btn-sun" href="https://www.google.com/maps/dir/?api=1&destination=1567+Harbor+Blvd%2C+Anaheim%2C+CA+92802" target="_blank" rel="noopener">Get directions</a>
-          <a class="btn btn-ghost" href="tel:+17149177763">Call (714) 917-7763</a>
-        </div>
-        <p class="loc-note">Hours: 7 AM – 11 PM, every day. Pickups and returns by appointment — book online and add a note that you'd like to pick up.</p>
+  <div class="wrap stack" style="gap:24px">
+    <div class="stack" style="gap:12px;max-width:760px">
+      <span class="eyebrow">Where we deliver · Anaheim</span>
+      <h2>Any hotel within a mile of Disneyland.</h2>
+      <p class="lead">Find your hotel on the map, then book. We bring the scooter to your front desk or bell stand and pick it up when you're done. Staying somewhere that isn't pinned? If it's inside the circle, we deliver there too.</p>
+    </div>
+    <div class="map-wrap">
+      <div id="serviceMap" class="service-map" role="region" aria-label="Map of hotels within one mile of Disneyland that Scott Mobility Scooters delivers to"></div>
+      <div class="map-legend" aria-hidden="true">
+        <span><i class="dot dot-hotel"></i>Hotels we deliver to</span>
+        <span><i class="dot dot-base"></i>Our base, 1567 Harbor Blvd</span>
+        <span><i class="dot dot-area"></i>1-mile delivery zone</span>
       </div>
-      <div class="map-frame">
-        <iframe
-          title="Map of Scott Mobility Scooters at 1567 Harbor Blvd, Anaheim, CA 92802"
-          src="https://www.google.com/maps?q=1567+Harbor+Blvd%2C+Anaheim%2C+CA+92802&z=15&output=embed"
-          width="600" height="420" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="loc-row">
+      <address class="loc-address">
+        <strong>Scott Mobility Scooters</strong><br>
+        1567 Harbor Blvd, Anaheim, CA 92802<br>
+        <span class="loc-note">Scooter storage and dispatch. Open 7 AM – 11 PM, every day. Deliveries only; nothing to pick up here.</span>
+      </address>
+      <div class="loc-actions">
+        <a class="btn btn-sun" href="https://book.squareup.com/appointments/dup2nzgyfiop99/location/LGDR8W3ANGE3V" target="_blank" rel="noopener">Book delivery · $75</a>
+        <a class="btn btn-ghost" href="tel:+17149177763">Call (714) 917-7763</a>
       </div>
     </div>
   </div>
@@ -536,5 +546,70 @@ footer a{color:var(--muted)}
 })();
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="" defer></script>
+<script>
+(function(){
+var BOOK="https://book.squareup.com/appointments/dup2nzgyfiop99/location/LGDR8W3ANGE3V";
+var HOTELS=[
+  ["The Disneyland Hotel","1150 Magic Way",33.8093792,-117.9269321],
+  ["Disney's Grand Californian Hotel","1600 Disneyland Dr",33.8076999,-117.9225439],
+  ["Pixar Place Hotel","1717 Disneyland Dr",33.8122228,-117.9243889],
+  ["Best Western Plus Park Place Inn","1544 S Harbor Blvd",33.8095431,-117.9146084],
+  ["Fairfield Inn Anaheim Resort","1460 S Harbor Blvd",33.8111423,-117.9135139],
+  ["Anaheim Desert Inn & Suites","1600 S Harbor Blvd",33.8087351,-117.9141607],
+  ["Best Western Plus Anaheim Inn","1630 S Harbor Blvd",33.8082601,-117.9149421],
+  ["Howard Johnson Anaheim","1380 S Harbor Blvd",33.8129572,-117.9141347],
+  ["Grand Legacy at the Park","1650 S Harbor Blvd",33.8076309,-117.9148518],
+  ["Courtyard Anaheim Theme Park Entrance","1420 S Harbor Blvd",33.8121372,-117.9135314],
+  ["Holiday Inn Express & Suites Anaheim Resort","1411 S Manchester Ave",33.8121697,-117.9130368],
+  ["Hilton Garden Inn / Home2 Suites Anaheim Resort","1441 S Manchester Ave",33.8114025,-117.9125901],
+  ["Desert Palms Hotel & Suites","631 W Katella Ave",33.803744,-117.9164805],
+  ["Residence Inn Anaheim Resort","640 W Katella Ave",33.8027744,-117.9172854],
+  ["Four Points by Sheraton Anaheim","1221 S Harbor Blvd",33.8173561,-117.9160199],
+  ["Wyndham Garden Anaheim","515 W Katella Ave",33.803855,-117.9143168],
+  ["SpringHill Suites Anaheim Resort","1801 S Harbor Blvd",33.8029445,-117.9161528],
+  ["Days Inn Anaheim West","1030 W Ball Rd",33.8176606,-117.922622],
+  ["Element Anaheim Resort","1600 S Clementine St",33.8084603,-117.9093722],
+  ["Staybridge Suites Anaheim at the Park","1050 W Ball Rd",33.8174224,-117.9231335],
+  ["Clementine Hotel & Suites","1700 S Clementine St",33.806755,-117.90994],
+  ["Anaheim Portofino Inn & Suites","1831 S Harbor Blvd",33.8021806,-117.9159933],
+  ["Best Western Courtesy Inn","1070 W Ball Rd",33.8177437,-117.9234976],
+  ["The Westin Anaheim Resort","1030 W Katella Ave",33.8021237,-117.9224182],
+  ["Hyatt House Anaheim Resort","1800 S Harbor Blvd",33.8028573,-117.9147438],
+  ["Sheraton Park Hotel","1855 S Harbor Blvd",33.8009935,-117.9160128],
+  ["Days Inn & Suites at Disneyland Park","1111 S Harbor Blvd",33.8191912,-117.9158243],
+  ["Travelodge Anaheim Inn & Suites","1057 W Ball Rd",33.8179796,-117.9229948],
+  ["Extended Stay America Convention Center","1742 S Clementine St",33.8048889,-117.9086027],
+  ["Hotel Indigo Anaheim","435 W Katella Ave",33.8038864,-117.913503],
+  ["Anaheim Majestic Garden Hotel","900 S Disneyland Dr",33.819576,-117.9210276],
+  ["Hotel Lulu","1850 S Harbor Blvd",33.8017732,-117.9145344],
+  ["Camelot Inn & Suites","1520 S Harbor Blvd",33.8101337,-117.9154324],
+  ["Castle Inn & Suites","1734 S Harbor Blvd",33.8049065,-117.9149305],
+  ["Tropicana Inn & Suites","1540 S Harbor Blvd",33.8100235,-117.9147447],
+  ["Park Vue Inn","1570 S Harbor Blvd",33.8088808,-117.914983],
+  ["Candy Cane Inn","1747 S Harbor Blvd",33.8042959,-117.9159018],
+  ["Alpine Inn","715 W Katella Ave",33.8037401,-117.9175469],
+  ["Hilton Anaheim","777 W Convention Way",33.8002,-117.917],
+  ["Anaheim Marriott","700 W Convention Way",33.799045,-117.918297],
+  ["JW Marriott Anaheim Resort","1775 S Clementine St",33.8044635,-117.9107451],
+  ["Cambria Hotel Anaheim Resort","101 E Katella Ave",33.8044209,-117.9061432]
+];
+function init(){
+  if(!window.L||!document.getElementById("serviceMap"))return;
+  var disney=[33.8121,-117.9190], base=[33.8094079,-117.9151530];
+  var map=L.map("serviceMap",{scrollWheelZoom:false,zoomControl:true}).setView([33.8095,-117.9165],15);
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
+  L.circle(disney,{radius:1609,color:"#1f6f8b",weight:2,fillColor:"#1f6f8b",fillOpacity:.08,dashArray:"6 6"}).addTo(map);
+  L.marker(disney,{icon:L.divIcon({className:"",html:'<div style="font:600 12px/1.2 system-ui;background:#fff;border:1px solid #1f6f8b;color:#0a3f52;padding:4px 8px;border-radius:8px;white-space:nowrap;transform:translate(-50%,-50%)">Disneyland Resort</div>',iconSize:[0,0]}),interactive:false}).addTo(map);
+  L.circleMarker(base,{radius:9,color:"#fff",weight:2,fillColor:"#f28c28",fillOpacity:1}).addTo(map)
+    .bindPopup("<strong>Scott Mobility Scooters</strong>1567 Harbor Blvd, Anaheim, CA 92802<br>Our base. We dispatch from here and deliver to you.");
+  HOTELS.forEach(function(h){
+    L.circleMarker([h[2],h[3]],{radius:7,color:"#fff",weight:2,fillColor:"#1f6f8b",fillOpacity:1}).addTo(map)
+      .bindPopup("<strong>"+h[0]+"</strong>"+h[1]+", Anaheim<br><a href=\""+BOOK+"\" target=\"_blank\" rel=\"noopener\">Book delivery here</a>");
+  });
+}
+if(document.readyState==="complete")init();else window.addEventListener("load",init);
+})();
+</script>
 </body>
 </html>
