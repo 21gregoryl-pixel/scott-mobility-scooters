@@ -10,7 +10,6 @@
 <meta property="og:description" content="Skip the park rental line. Your scooter is waiting at your hotel. $75/day, delivery included.">
 <link rel="icon" href="favicon.png" type="image/png">
 <link rel="canonical" href="https://scottmobilityscooters.com/">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="">
 <style>img{max-width:100%}[hidden]{display:none!important}.rentme{display:grid;grid-template-columns:minmax(0,480px) 1fr;gap:48px;align-items:center}
 .rentme img{max-width:100%;height:auto;border-radius:20px;background:#fff}
 .bigphone{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,7vw,3.6rem);letter-spacing:.02em;font-variant-numeric:tabular-nums;line-height:1}
@@ -546,7 +545,6 @@ footer a{color:var(--muted)}
 })();
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin="" defer></script>
 <script>
 (function(){
 var BOOK="https://book.squareup.com/appointments/dup2nzgyfiop99/location/LGDR8W3ANGE3V";
@@ -594,6 +592,14 @@ var HOTELS=[
   ["JW Marriott Anaheim Resort","1775 S Clementine St",33.8044635,-117.9107451],
   ["Cambria Hotel Anaheim Resort","101 E Katella Ave",33.8044209,-117.9061432]
 ];
+function loadMap(){
+  var el=document.getElementById("serviceMap"); if(!el)return;
+  var css=document.createElement("link"); css.rel="stylesheet"; css.href="vendor/leaflet/leaflet.css"; document.head.appendChild(css);
+  var js=document.createElement("script"); js.src="vendor/leaflet/leaflet.js"; js.async=true;
+  js.onload=init;
+  js.onerror=function(){ el.innerHTML='<div style="padding:24px;font-family:system-ui">Map unavailable right now. We deliver to every hotel within a mile of Disneyland, including all of Harbor Blvd, Katella Ave, Ball Rd and the Disney hotels.</div>'; };
+  document.head.appendChild(js);
+}
 function init(){
   if(!window.L||!document.getElementById("serviceMap"))return;
   var disney=[33.8121,-117.9190], base=[33.8094079,-117.9151530];
@@ -608,7 +614,10 @@ function init(){
       .bindPopup("<strong>"+h[0]+"</strong>"+h[1]+", Anaheim<br><a href=\""+BOOK+"\" target=\"_blank\" rel=\"noopener\">Book delivery here</a>");
   });
 }
-if(document.readyState==="complete")init();else window.addEventListener("load",init);
+var started=false; function start(){ if(started)return; started=true; loadMap(); }
+var target=document.getElementById("serviceMap");
+if("IntersectionObserver" in window && target){ var io=new IntersectionObserver(function(e){ if(e[0].isIntersecting){ io.disconnect(); start(); } },{rootMargin:"600px"}); io.observe(target); }
+else { if(document.readyState==="complete")start(); else window.addEventListener("load",start); }
 })();
 </script>
 </body>
